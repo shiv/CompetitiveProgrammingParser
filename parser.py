@@ -38,7 +38,9 @@ def close_panel():
 
 def update_settings():
     global settings, TESTS_FILE_SUFFIX
-    settings = sublime.load_settings('CompetitiveProgrammingParser.sublime-settings')
+    settings = sublime.load_settings('CompetitiveProgrammingParser ({os}).sublime-settings'.format(
+        os={ 'windows': 'Windows', 'linux': 'Linux', 'osx': 'OSX' }[sublime.platform().lower()])
+    )
     if settings.get('TESTS_FILE_SUFFIX') != None:
         TESTS_FILE_SUFFIX = settings.get('TESTS_FILE_SUFFIX')
     else:
